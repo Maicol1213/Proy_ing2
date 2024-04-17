@@ -5,9 +5,10 @@ import co.ucentra.citbanco.Citasbanc.entidades.Cita;
 import co.ucentra.citbanco.Citasbanc.servicios.CitaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 public class CitaController {
@@ -19,5 +20,12 @@ public class CitaController {
     public ResponseEntity<String> solicitarCita(@RequestBody Cita cita) {
         citaService.guardarCita(cita);
         return ResponseEntity.ok("Cita solicitada exitosamente");
+    }
+
+    @GetMapping("/citas/dia")
+    public ResponseEntity<List<Cita>> listarCitasDelDia(@RequestParam String sede, @RequestParam(required = false) String tipoServicio) {
+        LocalDate fechaHoy = LocalDate.now();
+        List<Cita> citas = citaService.listarCitasDelDia(fechaHoy, sede, tipoServicio);
+        return ResponseEntity.ok(citas);
     }
 }
