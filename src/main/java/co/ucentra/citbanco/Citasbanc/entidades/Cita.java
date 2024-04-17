@@ -1,16 +1,21 @@
 package co.ucentra.citbanco.Citasbanc.entidades;
 
+
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
 @Entity
 public class Cita {
 
-    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,13 +28,17 @@ public class Cita {
     private String sedeServicio;
     private String tipoServicio;
 
-    public void setId(Long id) {
+    public Cita() {
+    }
+
+    public Cita(Long id, String nombre, String identidad, String correo, String telefono, LocalDateTime fechaHora, String sedeServicio, String tipoServicio) {
         this.id = id;
+        this.nombre = nombre;
+        this.identidad = identidad;
+        this.correo = correo;
+        this.telefono = telefono;
+        this.fechaHora = fechaHora;
+        this.sedeServicio = sedeServicio;
+        this.tipoServicio = tipoServicio;
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    // Constructor, getters y setters
 }
