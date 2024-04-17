@@ -30,6 +30,14 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.2.24</version> <!-- La versión puede variar -->
+		</dependency>
+
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
