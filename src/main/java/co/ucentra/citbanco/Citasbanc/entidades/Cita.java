@@ -1,4 +1,4 @@
-package co.ucentral.Maicol1213.Miapp.entidades;
+package co.ucentra.citbanco.Citasbanc.entidades;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

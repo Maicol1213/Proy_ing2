@@ -1,6 +1,8 @@
-package co.ucentral.Maicol1213.Miapp.repositorios;
+package co.ucentra.citbanco.Citasbanc.repositorios;
 
-import co.ucentral.Maicol1213.Miapp.entidades.Cita;
+
+
+import co.ucentra.citbanco.Citasbanc.entidades.Cita;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

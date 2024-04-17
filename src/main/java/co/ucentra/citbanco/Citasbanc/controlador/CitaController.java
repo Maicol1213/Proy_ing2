@@ -1,7 +1,8 @@
 package co.ucentra.citbanco.Citasbanc.controlador;
 
-import co.ucentral.Maicol1213.Miapp.entidades.Cita;
-import co.ucentral.Maicol1213.Miapp.servicios.CitaService;
+
+import co.ucentra.citbanco.Citasbanc.entidades.Cita;
+import co.ucentra.citbanco.Citasbanc.servicios.CitaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
