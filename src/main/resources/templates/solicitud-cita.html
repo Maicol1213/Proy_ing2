@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Solicitar Cita</title>
+    <style>
+        /* Estilos CSS */
+    </style>
+</head>
+<body>
+<h1>Solicitar Cita</h1>
+<form id="formulario-cita">
+    <!-- Campo para el nombre -->
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" required><br>
+
+    <!-- Otros campos del formulario -->
+    <label for="identidad">Número de Identidad:</label>
+    <input type="text" id="identidad" name="identidad" placeholder="Ingrese su número de identidad" required><br>
+
+    <label for="email">Correo Electrónico:</label>
+    <input type="email" id="email" name="email" placeholder="Ingrese su correo electrónico" required><br>
+
+    <label for="telefono">Teléfono:</label>
+    <input type="text" id="telefono" name="telefono" placeholder="Ingrese su número de teléfono" required><br>
+
+    <label for="sede">Sede de Servicio:</label>
+    <select id="sede" name="sede">
+        <option value="centro">Centro</option>
+        <option value="norte">Norte</option>
+        <option value="sur">Sur</option>
+        <option value="aeropuerto">Aeropuerto</option>
+    </select><br>
+
+    <label for="tipoServicio">Tipo de Servicio:</label>
+    <select id="tipoServicio" name="tipoServicio">
+        <option value="caja">Caja</option>
+        <option value="asesoria">Asesoría</option>
+        <option value="nuevosProductos">Nuevos Productos</option>
+    </select><br>
+
+    <!-- Agrega aquí los campos para los otros atributos de la cita, como identidad, correo, etc. -->
+
+    <label for="fecha">Fecha y Hora:</label>
+    <input type="datetime-local" id="fecha" name="fecha" required><br>
+
+    <button type="submit">Enviar Solicitud</button>
+    <p id="success-message" class="message success-message">Cita solicitada exitosamente</p>
+    <p id="error-message" class="message error-message">Error al solicitar la cita. Por favor, inténtelo de nuevo más tarde.</p>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#formulario-cita').submit(function(event) {
+            event.preventDefault(); // Evita el comportamiento por defecto del formulario
+
+            // Obtener los datos del formulario y enviarlos al backend
+            var formData = {
+                nombre: $('#nombre').val(),
+                identidad: $('#identidad').val(),
+                email: $('#email').val(),
+                telefono: $('#telefono').val(),
+                sede: $('#sede').val(),
+                tipoServicio: $('#tipoServicio').val(),
+                fecha: $('#fecha').val()
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: '/citas/solicitar',
+                data: JSON.stringify(formData),
+                contentType: 'application/json',
+                success: function(response) {
+                    $('#success-message').show().delay(3000).fadeOut();
+                    $('#formulario-cita')[0].reset(); // Limpiar el formulario
+                },
+                error: function(xhr, status, error) {
+                    $('#error-message').show().delay(3000).fadeOut();
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
